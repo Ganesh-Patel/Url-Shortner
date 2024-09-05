@@ -2,19 +2,15 @@ import express from 'express';
 import cors from 'cors';
 import routes from './Routes/formRouter.js';
 import dotenv from 'dotenv';
-import connectDB from './config/connectDatabase.js';
+import connectDB from './Config/connectDatabase.js';
 dotenv.config();
 
 const app = express();
+app.use(cors('http://localhost:5173'));
 app.use(express.json()); 
-app.use(cors());
 connectDB();
    
 const port = process.env.PORT || 3000;   
-
-app.get('/', (req, res) =>{
-    res.send('Hello, World!');
-});
 
 app.use('/api',routes);
 

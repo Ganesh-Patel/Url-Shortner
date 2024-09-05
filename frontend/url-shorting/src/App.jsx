@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axios from 'axios'; // Import axios
+import axios from 'axios'; 
 import styles from './URLShortener.module.css';
 
 function App() {
@@ -15,15 +15,15 @@ function App() {
 
     try {
       console.log('API call');
-      // Make sure to use longUrl instead of undefined 'url'
-      const response = await axios.post('http://localhost:3000/api/url-shortener', { url: longUrl });
+
+      const response = await axios.post('http://localhost:3000/api/', { url: longUrl });
       console.log(response.data);
       alert(response.data.message);
-      setShortUrl(response.data.link); // Assuming the response has 'link'
+      setShortUrl(response.data.link); 
       setLoading(false);
     } catch (error) {
       alert(error.response?.data?.message || 'An error occurred');
-      setLoading(false); // Make sure loading state is reset in case of error
+      setLoading(false); 
     }
   };
 
@@ -56,5 +56,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
